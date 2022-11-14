@@ -87,15 +87,67 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: "oh boi this waz hard",
+    date:"11/14/2022",
+    firstParagraph:"lots of words here.",
+    secondParagraph:"maybe slightly less words here.",
+    thirdParagraph:"more words here than is reasonable.",
   }
 ];
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
-  and returns a DOM node looking like the one below:
+  and returns a DOM node looking like the one below:*/
 
-  <div class="article">
+  function articleMaker(artObj) {
+    
+    const article = document.createElement("div");
+    article.classList.add("article");
+    
+    const articleh2 = document.createElement("h2");
+    articleh2.textContent = artObj.title;
+    
+    const date = document.createElement("p");
+    date.classList.add("date");
+    date.textContent = artObj.date;
+    
+    const articlep1 = document.createElement("p");
+    articlep1.textContent = artObj.firstParagraph;
+    
+    const articlep2 = document.createElement("p");
+    articlep2.textContent = artObj.secondParagraph;
+    
+    const articlep3 = document.createElement("p");
+    articlep3.textContent = artObj.thirdParagraph;
+    
+    const span1 = document.createElement("span");
+    span1.classList.add("expandButton");
+    span1.textContent = "+";
+    
+    article.appendChild(articleh2);
+    article.appendChild(date);
+    article.appendChild(articlep1);
+    article.appendChild(articlep2);
+    article.appendChild(articlep3);
+    article.appendChild(span1);
+
+    span1.addEventListener("click", () => {
+      article.classList.toggle("article-open");
+    });
+
+
+    
+    return article;
+  }
+
+  for(let i = 0; i < data.length; i++) {
+    document.body.appendChild(articleMaker(data[i]));
+  }
+
+  /*<div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
 
