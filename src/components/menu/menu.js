@@ -26,12 +26,18 @@ let menuItems = [
       ulist.appendChild(item);
     }
 
-    const mbutton = document.querySelector("menu-button");
+    const mbutton = document.querySelector(".menu-button");
+    mbutton.addEventListener("click", () => {
+      menu.classList.toggle("menu--open");
+    })
+    console.log(menu);
 
     return menu;
   }
 
-  console.log(menuMaker(menuItems))
+  const header = document.querySelector(".header");
+
+  header.appendChild(menuMaker(menuItems));
 
   /*<div class="menu">
     <ul>
